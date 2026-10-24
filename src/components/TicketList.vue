@@ -1,7 +1,6 @@
 <script setup>
 import { ref, reactive, computed, watch, onMounted } from 'vue'
 
-/* ---- Stiller (light / dark) ---- */
 const field =
   'w-full rounded-xl bg-white px-4 py-3 text-[#0B2230] placeholder-black/40 ring-1 ring-black/10 focus:outline-none focus:ring-2 focus:ring-[#F5C451] dark:bg-white/10 dark:text-white dark:placeholder-white/40 dark:ring-white/10'
 const card =
@@ -18,7 +17,6 @@ const today = new Date().toISOString().slice(0, 10)
 const fmt = (d) =>
   new Date(d).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' })
 
-/* 1. Gozleg (filtr) */
 const locations = ref([])
 const route = reactive({ fromCountry: '', fromCity: '', toCountry: '', toCity: '', date: '' })
 
@@ -43,7 +41,6 @@ async function loadLocations() {
   }
 }
 
-/* 2. Reyslar (sahypalanan sanaw) */
 const flights = ref([])
 const page = ref(1)
 const lastPage = ref(1)
@@ -96,7 +93,6 @@ onMounted(() => {
   loadFlights()
 })
 
-/* 3. Yolagcylar we baha */
 const selected = ref(null)
 const passengers = ref([newPassenger()])
 const quote = ref(null)
@@ -108,7 +104,6 @@ function newPassenger() {
 
 const maxPassengers = computed(() => Math.min(9, selected.value?.available_seats ?? 1))
 
-// 18 yaş barlagy
 const allAgesFilled = computed(() =>
   passengers.value.every((p) => p.age !== '' && p.age !== null)
 )
@@ -152,10 +147,8 @@ async function fetchQuote() {
     quoting.value = false
   }
 }
-// ýolagçy sany üýtgände baha Laravel-den täzeden alynýar
 watch(() => passengers.value.length, fetchQuote)
 
-/* 4. Satyn almak */
 const submitting = ref(false)
 const message = ref(null)
 const errors = ref({})
@@ -197,7 +190,7 @@ function reset() {
   ticket.value = null
   selected.value = null
   passengers.value = [newPassenger()]
-  loadFlights() // ýer sanlary üýtgedi
+  loadFlights() 
 }
 </script>
 
@@ -208,7 +201,6 @@ function reset() {
     <div class="mx-auto max-w-4xl px-6">
       <h1 class="text-4xl font-bold tracking-tight md:text-5xl">Tickets</h1>
 
-      <!-- Bilet satyn alyndy -->
       <section v-if="ticket" :class="card" class="mt-8 p-8">
         <h2 class="text-3xl font-bold">Ticket confirmed</h2>
         <p :class="soft" class="mt-4">Your booking code</p>
@@ -241,7 +233,6 @@ function reset() {
       </section>
 
       <template v-else>
-        <!-- Gozleg formasy -->
         <form
           v-if="!selected"
           @submit.prevent="search"
@@ -302,7 +293,6 @@ function reset() {
           </div>
         </form>
 
-        <!-- Reyslar sanawy (gozlegin asagynda, paginate) -->
         <section v-if="!selected" class="mt-8">
           <div class="flex items-baseline justify-between">
             <h2 class="text-xl font-semibold">
@@ -361,7 +351,6 @@ function reset() {
             </li>
           </ul>
 
-          <!-- Sahypalama -->
           <div v-if="lastPage > 1" class="mt-8 flex items-center justify-center gap-4">
             <button
               :disabled="page === 1 || loading"
@@ -383,7 +372,6 @@ function reset() {
           </div>
         </section>
 
-        <!-- Yolagcylar (reys saylanandan soň) -->
         <form v-else @submit.prevent="buy" class="mt-8 space-y-6">
           <div :class="card" class="flex items-start justify-between gap-4 p-5">
             <div>
@@ -478,7 +466,6 @@ function reset() {
             + Add passenger
           </button>
 
-          <!-- Baha Laraveldan -->
           <div
             class="flex flex-col gap-4 border-t border-black/10 pt-6 dark:border-white/10 sm:flex-row sm:items-center sm:justify-between"
           >
