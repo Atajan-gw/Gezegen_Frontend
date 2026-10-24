@@ -35,9 +35,9 @@ import ToggleDarkMode from '../common/ToggleDarkMode.vue';
           </RouterLink>
         </li>
         <li>
-          <a href="#" class="block rounded-full px-4 py-2 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-slate-900">
+          <RouterLink to="/tickets" class="block rounded-full px-4 py-2 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-slate-900">
             Tickets
-          </a>
+          </RouterLink>
         </li>
       </ul>
 
