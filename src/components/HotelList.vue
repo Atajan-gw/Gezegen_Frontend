@@ -53,7 +53,8 @@ watch(page, load)
 </script>
 
 <template>
-  <section class="mx-auto max-w-6xl px-4 py-10">
+  <main class="min-h-screen bg-[#EEF3F4] pb-20 text-[#0B2230] dark:bg-[#0B2230] dark:text-white">
+    <section class="mx-auto max-w-6xl px-4 py-10">
     <div class="mb-8 flex items-end justify-between">
       <div>
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 pt-20 dark:text-white">Hotels</h2>
@@ -108,10 +109,11 @@ watch(page, load)
     </li>
   </ul>
 
-  <div class="mt-8 flex items-center justify-center gap-4">
+  <div class="mt-8 flex items-center justify-center gap-4 dark:text-white">
     <button :disabled="page === 1 || loading" @click="page--">Last Page</button>
     <span>{{ page }} / {{ lastPage }}</span>
     <button :disabled="page === lastPage || loading" @click="page++">Next Page</button>
   </div>
   </section>
+  </main>
 </template>

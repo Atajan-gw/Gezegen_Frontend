@@ -18,7 +18,7 @@ onMounted(async () => {
     error.value = e.message
     console.error(e)
   } finally {
-    loading.value = false   // muny unutma
+    loading.value = false
   }
 })
 </script>
@@ -62,6 +62,14 @@ onMounted(async () => {
             class="rounded-full border border-white/30 px-7 py-3.5 font-semibold text-white transition hover:border-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
           >
             Browse hotels
+          </RouterLink>
+        </div>
+        <div class="mt-10">
+          <RouterLink
+            to="/tickets"
+            class="rounded-full border border-white/30 px-7 py-3.5 font-semibold text-white transition hover:border-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
+          >
+            Buy Tickets
           </RouterLink>
         </div>
       </div>
@@ -109,7 +117,7 @@ onMounted(async () => {
         </ul>
 
         <p v-else class="mt-10 text-[#0B2230]/70">
-          Could not load cities. Make sure the Laravel server is running.
+          Could not load cities.
         </p>
       </div>
     </section>
