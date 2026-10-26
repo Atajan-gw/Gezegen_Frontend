@@ -228,7 +228,7 @@ function reset() {
           :class="outlineBtn"
           class="mt-8 px-6 py-3 font-semibold"
         >
-          Book another ticket
+          Buy another ticket
         </button>
       </section>
 
